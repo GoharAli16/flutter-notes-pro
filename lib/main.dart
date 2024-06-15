@@ -17,23 +17,19 @@ import 'features/search/presentation/providers/search_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   // Initialize Firebase
   await Firebase.initializeApp();
-  
+
   // Initialize Hive
   await Hive.initFlutter();
-  
+
   // Initialize services
   await NotificationService.initialize();
   await SyncService.initialize();
   await AIService.initialize();
-  
-  runApp(
-    const ProviderScope(
-      child: NotesProApp(),
-    ),
-  );
+
+  runApp(const ProviderScope(child: NotesProApp()));
 }
 
 class NotesProApp extends ConsumerWidget {
@@ -43,7 +39,7 @@ class NotesProApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final router = ref.watch(routerProvider);
     final themeMode = ref.watch(themeModeProvider);
-    
+
     return MaterialApp.router(
       title: AppConfig.appName,
       debugShowCheckedModeBanner: false,
